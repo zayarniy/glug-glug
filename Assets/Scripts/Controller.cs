@@ -9,24 +9,31 @@ public class Controller : MonoBehaviour
     Transform Ship;
     Transform Diver;
     public Vector3 DiverOffset;
+    public Vector3 LineOffset;
+    LineRenderer lineRenderer;
+    public Vector3 leftBound, rightBound;
 
     void Start()
     {
         Ship = transform;
         Diver = GameObject.FindGameObjectsWithTag("Diver")[0].transform;
-        print(Diver);
+        lineRenderer=GetComponent<LineRenderer>();
+        lineRenderer.enabled = true;
+        //print(Diver);
     }
 
     // Update is called once per frame
     void Update()
     {
 
+        lineRenderer.SetPosition(0, Ship.position+LineOffset);
+        lineRenderer.SetPosition(1, Diver.position+LineOffset);
         float move = speed * Time.deltaTime;
         float dx = Input.GetAxis("Horizontal");
         print(Ship.position.x);
-        
 
-        if (Ship.position.x+move*dx >= -7.8f && Ship.position.x+move*dx <= 7.73f)
+        Debug.DrawLine(Ship.position, Diver.position);
+        if (Ship.position.x+move*dx >= leftBound.x && Ship.position.x+move*dx <= rightBound.x)
         {
             //Ship.Translate(move * Input.GetAxis("Horizontal"), 0, 0);
             Ship.position=new Vector3((float)Ship.position.x+move * dx, (float)Ship.position.y, (float)Ship.position.z);
