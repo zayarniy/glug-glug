@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a1a530ca55515d340824b4ec1d20a523
+guid: 688874da01719ef4fa93761fe25878a7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -129,127 +129,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spites_0
+      name: diver2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 112
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3e5b6ede33e9f494d819e1083e55aaea
-      internalID: 149851254
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spites_1
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 112
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ae3947e1cfff1604da2ca75a51d33490
-      internalID: 2132540858
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spites_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 78
-        width: 64
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 72c66ae07c76e8443b8f47b9ad0b9ea4
-      internalID: 1628874601
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spites_3
-      rect:
-        serializedVersion: 2
-        x: 0
+        x: 1
         y: 0
-        width: 31
-        height: 32
+        width: 128
+        height: 192
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d35c84f569df1754caace9b54e92018a
-      internalID: 32864327
+      spriteID: a7d3c55bb2802f2499b6c98894ca2f9c
+      internalID: -1946073627
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spites_4
+      name: diver2_1
       rect:
         serializedVersion: 2
-        x: 31
+        x: 128
         y: 0
-        width: 32
-        height: 32
+        width: 128
+        height: 192
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2efbce3717ad87f45891a3967cbe5655
-      internalID: 864194757
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spites_5
-      rect:
-        serializedVersion: 2
-        x: 62
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2012f34cbe45037469c433e37f5665cb
-      internalID: 1714464344
+      spriteID: 08c09e332c9fcbc4d9372e919bad26a4
+      internalID: 1478207522
       vertices: []
       indices: 
       edges: []
@@ -265,12 +181,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      spites_1: 2132540858
-      spites_5: 1714464344
-      spites_4: 864194757
-      spites_3: 32864327
-      spites_0: 149851254
-      spites_2: 1628874601
+      diver2_0: -1946073627
+      diver2_1: 1478207522
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

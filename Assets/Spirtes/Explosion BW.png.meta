@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a1a530ca55515d340824b4ec1d20a523
+guid: d8ae6955faf03304796b2588b61a7329
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -129,127 +129,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spites_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 112
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3e5b6ede33e9f494d819e1083e55aaea
-      internalID: 149851254
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spites_1
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 112
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ae3947e1cfff1604da2ca75a51d33490
-      internalID: 2132540858
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spites_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 78
-        width: 64
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 72c66ae07c76e8443b8f47b9ad0b9ea4
-      internalID: 1628874601
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spites_3
+      name: Explosion BW_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 31
+        width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d35c84f569df1754caace9b54e92018a
-      internalID: 32864327
+      spriteID: 04b97964d2bbf0f4faed5b79d852743b
+      internalID: -887720733
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spites_4
+      name: Explosion BW_1
       rect:
         serializedVersion: 2
-        x: 31
+        x: 32
         y: 0
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2efbce3717ad87f45891a3967cbe5655
-      internalID: 864194757
+      spriteID: eba8effa1077c7446ab389fe1354d6e2
+      internalID: 826106632
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spites_5
+      name: Explosion BW_2
       rect:
         serializedVersion: 2
-        x: 62
+        x: 64
         y: 0
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2012f34cbe45037469c433e37f5665cb
-      internalID: 1714464344
+      spriteID: 1649a77bc5b55684ca5f9e18a2ee4703
+      internalID: -1263540041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion BW_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 727533cbef4a93d40b4ea53f65d40034
+      internalID: 1594335211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion BW_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75fd1e7a9c8637c45b1dd99996b62530
+      internalID: -1053418454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion BW_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8ecd507a3a7f0d4f91459c3c28320d4
+      internalID: 432072977
       vertices: []
       indices: 
       edges: []
@@ -265,12 +265,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      spites_1: 2132540858
-      spites_5: 1714464344
-      spites_4: 864194757
-      spites_3: 32864327
-      spites_0: 149851254
-      spites_2: 1628874601
+      Explosion BW_3: 1594335211
+      Explosion BW_0: -887720733
+      Explosion BW_5: 432072977
+      Explosion BW_2: -1263540041
+      Explosion BW_4: -1053418454
+      Explosion BW_1: 826106632
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
