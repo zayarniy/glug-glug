@@ -49,7 +49,7 @@ public class Controller : MonoBehaviour
     private void Fish_Explosion(Vector3 pos)
     {
         InsExplosion=GameObject.Instantiate(ExplosionPrefab, pos, Quaternion.identity) as GameObject;
-        Invoke("Dead", 3f);
+        Invoke("Dead", 2f);
         Invoke("StopExplosionAnimation", 2f);
 
     }
@@ -92,7 +92,7 @@ public class Controller : MonoBehaviour
                     //print(Diver.position.y);
 
                     //   Debug.DrawLine(Ship.position, Diver.position);
-                    if (Ship.position.x + move * dx >= leftBound.x && Ship.position.x + move * dx <= rightBound.x)
+                    //if (Ship.position.x + move * dx >= leftBound.x && Ship.position.x + move * dx <= rightBound.x)
                     {
                         //Ship.Translate(move * Input.GetAxis("Horizontal"), 0, 0);
                         Ship.position = new Vector3((float)Ship.position.x + move * dx, (float)Ship.position.y, (float)Ship.position.z);
