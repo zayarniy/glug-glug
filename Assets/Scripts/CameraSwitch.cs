@@ -21,11 +21,11 @@ public class CameraSwitch : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         print("CamTriggerEnter");
-        cam.enabled = true;
+       // cam.enabled = true;
     }
 
-    
-    private void OnTriggerExit2D(Collider other)
+
+    private void OnTriggerExit2D(Collider2D other)
     {
         print("CamTriggerExit");
         //cam.enabled = false;

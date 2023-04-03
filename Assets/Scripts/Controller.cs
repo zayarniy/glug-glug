@@ -25,6 +25,7 @@ public class Controller : MonoBehaviour
     Animator DiverAnimation;
     public GameObject ExplosionPrefab;
     GameObject InsExplosion;
+    public GameObject bulletPrefab;
 
     public static void ExplosionExecute(Transform transform)
     {
@@ -61,6 +62,11 @@ public class Controller : MonoBehaviour
             Destroy(InsExplosion);
         }
     }
+
+    void Fire(Vector2 pos)
+    {
+        InsExplosion = GameObject.Instantiate(bulletPrefab, pos, Quaternion.identity) as GameObject;
+    }
     void Dead()
     {
         gameStatus=GameStatus.Play;
@@ -87,7 +93,10 @@ public class Controller : MonoBehaviour
                     //if (Input.GetButtonDown("right")) Diver.localScale = new Vector3(DiverScale.x, DiverScale.y, 0);
                     if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) Diver.localScale = new Vector3(-DiverScale.x, DiverScale.y, 0);
                     if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) Diver.localScale = new Vector3(DiverScale.x, DiverScale.y, 0);
-
+                    if (Input.GetKeyDown(KeyCode.LeftControl))
+                        {
+                            Fire(Diver.transform.position);
+                        }
 
                     //print(Diver.position.y);
 
