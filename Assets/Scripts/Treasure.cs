@@ -20,7 +20,7 @@ public class Treasure : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (Controller.holdTreasure == null)
+        if (collision.tag=="Diver" && Controller.holdTreasure == null)
         {
             Controller.holdTreasure = this.gameObject;
             delta = collision.transform.position - this.gameObject.transform.position;

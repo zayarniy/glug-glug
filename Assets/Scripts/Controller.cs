@@ -23,8 +23,8 @@ public class Controller : MonoBehaviour
     public Vector3 leftBound, rightBound;
     Vector3 DiverScale;
     Animator DiverAnimation;
-    public GameObject ExplosionPrefab;
-    GameObject InsExplosion;
+    
+  
     public GameObject bulletPrefab;
 
     public static void ExplosionExecute(Transform transform)
@@ -41,37 +41,21 @@ public class Controller : MonoBehaviour
         lineRenderer=GetComponent<LineRenderer>();
         lineRenderer.enabled = true;
         DiverAnimation = GetComponentInChildren<Animator>();
-        Fish.Explosion += Fish_Explosion;
+        //Fish.Explosion += Fish_Explosion;
         //Controller.Explosion = GameObject.Find("Explosion");
 
         //print(Diver);
     }
 
-    private void Fish_Explosion(Vector3 pos)
-    {
-        InsExplosion=GameObject.Instantiate(ExplosionPrefab, pos, Quaternion.identity) as GameObject;
-        Invoke("Dead", 2f);
-        Invoke("StopExplosionAnimation", 2f);
-
-    }
-
-    void StopExplosionAnimation()
-    {
-        //if (InsExplosion!=null)
-        {
-            Destroy(InsExplosion);
-        }
-    }
+ 
 
     void Fire(Vector2 pos)
     {
-        InsExplosion = GameObject.Instantiate(bulletPrefab, pos, Quaternion.identity) as GameObject;
+        var bullet = GameObject.Instantiate(bulletPrefab, pos, Quaternion.identity); 
+        Rigidbody2D rigidbody = bullet.GetComponent<Rigidbody2D>();
+        rigidbody.velocity = Diver.localScale.x>0?new Vector2(10f,0f): new Vector2(-10f, 0f); ;
     }
-    void Dead()
-    {
-        gameStatus=GameStatus.Play;
-        
-    }
+
 
     // Update is called once per frame
     void Update()
@@ -139,4 +123,7 @@ public class Controller : MonoBehaviour
                 }
     }
     }
+
+
+
 }

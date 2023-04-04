@@ -5,8 +5,8 @@ using UnityEngine.UIElements;
 public class Fish : MonoBehaviour
 {
     public float Speed;
-
-    public static event System.Action<Vector3> Explosion;
+    Rigidbody2D rigidbody2d;
+    int lenPath = 0, lenPathBeforeRotate;
     
     public Transform[] waypoints;
 
@@ -18,6 +18,8 @@ public class Fish : MonoBehaviour
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        rigidbody2d = GetComponent<Rigidbody2D>();
+        lenPathBeforeRotate=1000+500*Random.Range(1,5);
     }
     //public string gateTag = "gate1";
     //void Start()
@@ -26,42 +28,62 @@ public class Fish : MonoBehaviour
     //}
     void Update()
     {
-        if (curWaypointIndex < waypoints.Length)
+        lenPath++;
+        if (lenPath > lenPathBeforeRotate)
         {
-            //transform.position = Vector3.Lerp(transform.position, waypoints[curWaypointIndex].position, Time.deltaTime * Speed);
-             float dirx=(waypoints[curWaypointIndex].position-transform.position).x;
-            if (dirx < 0)
-            {
+            lenPath = 0;
+            rigidbody2d.velocity = new Vector2(Random.Range(-3f, 3f), Random.Range(-0.5f, .5f));
+            if (rigidbody2d.velocity.x < 0)
                 spriteRenderer.flipX = true;
-            }
             else
-            {
                 spriteRenderer.flipX = false;
-            }
-            transform.position = Vector3.MoveTowards(transform.position, waypoints[curWaypointIndex].position, Time.deltaTime * Speed);
+        }
+        if (transform.position.y >= 2.71)
+        {
+            rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, Mathf.Abs(rigidbody2d.velocity.y) * -1f);
+            
+        }
+        if (transform.position.y <= -4.67) rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, Mathf.Abs(rigidbody2d.velocity.y) * 1f);
 
-            //если достигли одной из точек, то переходим к другой точке
-            if (Vector3.Distance(transform.position, waypoints[curWaypointIndex].position) < 0.5f)
-            {
-                curWaypointIndex++;
-            }
-        }        
-        else curWaypointIndex = 0;
+
+        //if (curWaypointIndex < waypoints.Length)
+        //{
+        //    //transform.position = Vector3.Lerp(transform.position, waypoints[curWaypointIndex].position, Time.deltaTime * Speed);
+        //     float dirx=(waypoints[curWaypointIndex].position-transform.position).x;
+        //    if (dirx < 0)
+        //    {
+        //        spriteRenderer.flipX = true;
+        //    }
+        //    else
+        //    {
+        //        spriteRenderer.flipX = false;
+        //    }
+        //    transform.position = Vector3.MoveTowards(transform.position, waypoints[curWaypointIndex].position, Time.deltaTime * Speed);
+
+        //    //если достигли одной из точек, то переходим к другой точке
+        //    if (Vector3.Distance(transform.position, waypoints[curWaypointIndex].position) < 0.5f)
+        //    {
+        //        curWaypointIndex++;
+        //    }
+        //}        
+        //else curWaypointIndex = 0;
     }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Diver")
-        {
-            //Controller.ExplosionExecute(collision.gameObject.transform);
-            Explosion(collision.transform.position);
-            Controller.gameStatus = GameStatus.GameOver;
-        }
+//        if (collision.gameObject.tag == "Diver")
+//        {
+//            Controller.ExplosionExecute(collision.gameObject.transform);
+////            Explosion(collision.transform.position);
+//            Controller.gameStatus = GameStatus.GameOver;
+//        }
 
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+  //      Explosion(collision.transform.position);
+        //Controller.gameStatus = GameStatus.GameOver;
     }
 
 
