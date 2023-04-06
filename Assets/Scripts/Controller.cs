@@ -9,8 +9,9 @@ public enum GameStatus
 
 public class Controller : MonoBehaviour
 {
-    
 
+    int countTreasures = 3;
+    public int Score = 0;
     static public GameObject holdTreasure = null;
     static public GameStatus gameStatus=GameStatus.Play;
     // Start is called before the first frame update
@@ -23,14 +24,58 @@ public class Controller : MonoBehaviour
     public Vector3 leftBound, rightBound;
     Vector3 DiverScale;
     Animator DiverAnimation;
-    
-  
+    AudioSource audioSource, audioSource2;
+    public TMPro.TextMeshProUGUI scoreText,energyScore;
+    int Energy = 10;
+    public AudioClip StartAudioClip, FireAudioClip;
     public GameObject bulletPrefab;
+    public GameObject[] Treasures;
+    public GameObject GameOverPanel;
+
+
+
+    public void UpdateScore()
+    {
+        scoreText.text = (++Score).ToString();
+    }
 
     public static void ExplosionExecute(Transform transform)
     {
         
        // Instantiate(Explosion, transform.position, Quaternion.identity);
+    }
+
+    private void Awake()
+    {
+        
+        var audioSources = GetComponentsInChildren<AudioSource>();
+        audioSource = audioSources[0];
+        audioSource2=audioSources[1];
+        audioSource.clip = FireAudioClip;
+        audioSource2.clip = StartAudioClip;
+        Score = 0;
+        Bullet.Clash += UpdateScore;
+        DiverController.diverClash = EnergyLow;
+        Energy = 10;
+        countTreasures = 3;
+
+    }
+
+    private void EnergyLow()
+    {
+        Energy--;
+        energyScore.text = (Energy).ToString();
+        if (Energy<=0)
+        {
+            GameOver();
+        }
+
+    }
+
+    void GameOver()
+    {
+        gameStatus = GameStatus.GameOver;
+        GameOverPanel.SetActive(true);
     }
 
     void Start()
@@ -41,19 +86,34 @@ public class Controller : MonoBehaviour
         lineRenderer=GetComponent<LineRenderer>();
         lineRenderer.enabled = true;
         DiverAnimation = GetComponentInChildren<Animator>();
+        
         //Fish.Explosion += Fish_Explosion;
         //Controller.Explosion = GameObject.Find("Explosion");
 
         //print(Diver);
     }
 
- 
+   public void Restart()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        gameStatus = GameStatus.Play;
+        FishController.fishList.Clear();
+        /*GameOverPanel.SetActive(false);
+        gameStatus = GameStatus.Play;
+        Energy = 11;
+        EnergyLow();
+        NextLevel();
+        */
+    }
 
     void Fire(Vector2 pos)
     {
         var bullet = GameObject.Instantiate(bulletPrefab, pos, Quaternion.identity); 
         Rigidbody2D rigidbody = bullet.GetComponent<Rigidbody2D>();
-        rigidbody.velocity = Diver.localScale.x>0?new Vector2(10f,0f): new Vector2(-10f, 0f); ;
+        rigidbody.velocity = Diver.localScale.x>0?new Vector2(10f,0f): new Vector2(-10f, 0f);
+        //audioSource.Stop();
+        audioSource.clip = FireAudioClip;
+        audioSource.Play();
     }
 
 
@@ -90,9 +150,16 @@ public class Controller : MonoBehaviour
                         //Ship.Translate(move * Input.GetAxis("Horizontal"), 0, 0);
                         Ship.position = new Vector3((float)Ship.position.x + move * dx, (float)Ship.position.y, (float)Ship.position.z);
                         if (Diver.position.y + move * dy < -4.098 && dx != 0)
-                            DiverAnimation.enabled = true;
+                        {
+                            //DiverAnimation.enabled = true;
+                            DiverAnimation.SetBool("Walk", true);
+                        }
                         if (Diver.position.y + move * dy > -4.098 || dx == 0)
-                            DiverAnimation.enabled = false;
+
+                        {
+                            //DiverAnimation.enabled = false;
+                            DiverAnimation.SetBool("Walk", false);
+                        }
                         if (Diver.position.y + move * dy <= -4.1)
                         {
                             Diver.position = new Vector3((float)Ship.position.x, -4.1f, 0);
@@ -104,10 +171,17 @@ public class Controller : MonoBehaviour
                         else
                         if (holdTreasure != null)
                         {
-                            print("holdTreasure arrived" + Diver.transform.position);
-
-                            Destroy(holdTreasure);
+                            //print("holdTreasure arrived" + Diver.transform.position);
+                            //audioSource.Stop();
+                            audioSource2.Play();
+                            //Destroy(holdTreasure);
+                            holdTreasure.SetActive(false);
                             holdTreasure = null;
+                            countTreasures--;
+                            if (countTreasures == 0)
+                            {
+                                NextLevel();
+                            }
                         }
                         if (holdTreasure != null)
                             holdTreasure.transform.position = Diver.position - Treasure.delta;
@@ -124,6 +198,16 @@ public class Controller : MonoBehaviour
     }
     }
 
+    void NextLevel()
+    {
+        countTreasures = 3;
+        for (int i = 0; i < Treasures.Length; i++)
+        {
+            Treasures[i].transform.position = new Vector2(Random.Range(-10.30f, 10.50f), -4.42f);
+            Treasures[i].SetActive(true);
+        }
+        
+    }
 
 
 }

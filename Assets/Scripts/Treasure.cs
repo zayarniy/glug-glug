@@ -7,16 +7,16 @@ public class Treasure : MonoBehaviour
     // Start is called before the first frame update
 
     static public Vector3 delta;
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    AudioSource audioSource;
+
+    private void Awake()
     {
-        
+        audioSource=GetComponent<AudioSource>();
+        //print("AudioSource:" + audioSource);
     }
+    
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -24,6 +24,7 @@ public class Treasure : MonoBehaviour
         {
             Controller.holdTreasure = this.gameObject;
             delta = collision.transform.position - this.gameObject.transform.position;
+            audioSource.Play();
         }
         //transform.position = collision.transform.position;
     }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DiverController : MonoBehaviour
 {
+
+    static public System.Action diverClash;
     // Start is called before the first frame update
     public GameObject ExplosionPrefab;
 
@@ -12,8 +14,9 @@ public class DiverController : MonoBehaviour
 
         if (collision.gameObject.tag == "Fish")
         {
-            print("Controller on TriggerEnter2D " + collision.gameObject.tag);
+            //print("Controller on TriggerEnter2D " + collision.gameObject.tag);
             var Explosion = GameObject.Instantiate(ExplosionPrefab, collision.transform.position, Quaternion.identity);
+            diverClash?.Invoke();
 //            print(Explosion.name);
             // Controller.ExplosionExecute(collision.gameObject.transform);
 
