@@ -7,7 +7,7 @@ public enum GameStatus
     GameOver, Play, Pause
 }
 
-public class Controller : MonoBehaviour
+public class Controller : MonoBehaviour, IListener
 {
 
     int countTreasures = 3;
@@ -54,8 +54,8 @@ public class Controller : MonoBehaviour
         audioSource.clip = FireAudioClip;
         audioSource2.clip = StartAudioClip;
         Score = 0;
-        Bullet.Clash += UpdateScore;
-        DiverController.diverClash = EnergyLow;
+        //Bullet.Clash += UpdateScore;
+        //DiverController.diverClash = EnergyLow;
         Energy = 10;
         countTreasures = 3;
 
@@ -86,14 +86,16 @@ public class Controller : MonoBehaviour
         lineRenderer=GetComponent<LineRenderer>();
         lineRenderer.enabled = true;
         DiverAnimation = GetComponentInChildren<Animator>();
-        
+        EventManager.Instance.AddListener(EVENT_TYPE.HEALTH_CHANGE, this);
+        EventManager.Instance.AddListener(EVENT_TYPE.CLASH, this);
+
         //Fish.Explosion += Fish_Explosion;
         //Controller.Explosion = GameObject.Find("Explosion");
 
         //print(Diver);
     }
 
-   public void Restart()
+    public void Restart()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         gameStatus = GameStatus.Play;
@@ -209,5 +211,24 @@ public class Controller : MonoBehaviour
         
     }
 
-
+    public void OnEvent(EVENT_TYPE Event_Type, Component Sender, Object Param = null)
+    {
+        switch (Event_Type)
+        {
+            case EVENT_TYPE.GAME_INIT:
+                break;
+            case EVENT_TYPE.GAME_END:
+                break;
+            case EVENT_TYPE.HEALTH_CHANGE:
+                EnergyLow();
+                break;
+            case EVENT_TYPE.DEAD:
+                break;
+            case EVENT_TYPE.CLASH:
+                UpdateScore();
+                break;
+            default:
+                break;
+        }
+    }
 }

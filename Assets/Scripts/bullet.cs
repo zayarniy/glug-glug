@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
 
-    static public System.Action Clash;
+    //static public System.Action Clash;
     public float speed = 10f;
     public int fireLength = 400;
     int length = 0;
@@ -39,7 +39,8 @@ public class Bullet : MonoBehaviour
 
             //print("FishController.fishList.Count:"+FishController.fishList.Count);
             var Explosion = GameObject.Instantiate(ExplosionPrefab, collision.transform.position, Quaternion.identity);
-            Clash?.Invoke();
+            EventManager.Instance.PostNotification(EVENT_TYPE.CLASH, this);
+            //Clash?.Invoke();
             if (FishController.fishList.Count == 0)
             {
                 GameManager.Instance.CreateSchoolOfFish(Random.Range(1, 10));
